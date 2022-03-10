@@ -24,6 +24,12 @@ jobs:
       #----------------------------------------------------------------------
       - task: Npm@1
         inputs:
+         workingDir: '$(Build.SourcesDirectory)/certifications'
+        displayName: 'INSTALL: launch npm install'
+      - script: echo  '$(System.DefaultWorkingDirectory)'
+                dir
+      - task: Npm@1
+        inputs:
           command: 'install'
           workingDir: '$(Build.SourcesDirectory)/certifications'
         displayName: 'INSTALL: launch npm install'
