@@ -2,6 +2,7 @@ jobs:
   - job: Test
     pool:
       vmImage: 'ubuntu-20.04'
+      
     variables:
       NODE_VERSION: 16.13.1
       SPRING_OUTPUT_ANSI_ENABLED: NEVER
@@ -16,7 +17,6 @@ jobs:
       #----------------------------------------------------------------------
       - task: NodeTool@0
         inputs:
-          workingDirectory: '$(Build.SourcesDirectory)/certifications'
           versionSpec: $(NODE_VERSION)
         displayName: 'TOOLS: install Node.js'
         
@@ -28,6 +28,7 @@ jobs:
           command: 'install'
         displayName: 'INSTALL: launch npm install'
       - script: chmod +x mvnw
+        workingDirectory: '$(Build.SourcesDirectory)/certifications'
       - task: Npm@1
         inputs:
           command: 'custom'
@@ -60,6 +61,7 @@ jobs:
       # Production build
       #----------------------------------------------------------------------
       - script: ./mvnw package -Pprod -DskipTests
+        workingDirectory: '$(Build.SourcesDirectory)/certifications' 
         displayName: 'BUILD: creating production build'
       - task: CopyFiles@2
         inputs:
