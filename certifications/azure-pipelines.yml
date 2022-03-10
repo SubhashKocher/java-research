@@ -16,9 +16,10 @@ jobs:
       #----------------------------------------------------------------------
       - task: NodeTool@0
         inputs:
+          workingDirectory: '$(Build.SourcesDirectory)/certifications'
           versionSpec: $(NODE_VERSION)
         displayName: 'TOOLS: install Node.js'
-        workingDirectory: '$(Build.SourcesDirectory)/certifications'
+        
       #----------------------------------------------------------------------
       # Tests
       #----------------------------------------------------------------------
