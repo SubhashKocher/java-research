@@ -2,6 +2,7 @@ jobs:
   - job: Test
     pool:
       vmImage: 'ubuntu-20.04'
+      workingDirectory: '$(Build.SourcesDirectory)/certifications'
     variables:
       NODE_VERSION: 16.13.1
       SPRING_OUTPUT_ANSI_ENABLED: NEVER
@@ -16,7 +17,6 @@ jobs:
       #----------------------------------------------------------------------
       - task: NodeTool@0
         inputs:
-          workingDirectory: '$(Build.SourcesDirectory)/certifications'
           versionSpec: $(NODE_VERSION)
         displayName: 'TOOLS: install Node.js'
         
