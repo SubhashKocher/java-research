@@ -16,7 +16,6 @@ jobs:
       #----------------------------------------------------------------------
       - task: NodeTool@0
         inputs:
-          workingDirectory: '$(Build.SourcesDirectory)/certifications'
           versionSpec: $(NODE_VERSION)
         displayName: 'TOOLS: install Node.js'
         
@@ -26,6 +25,7 @@ jobs:
       - task: Npm@1
         inputs:
           command: 'install'
+          workingDirectory: '$(Build.SourcesDirectory)/certifications'
         displayName: 'INSTALL: launch npm install'
       - script: chmod +x mvnw
       - task: Npm@1
