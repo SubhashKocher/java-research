@@ -18,6 +18,7 @@ jobs:
         inputs:
           versionSpec: $(NODE_VERSION)
         displayName: 'TOOLS: install Node.js'
+        workingDirectory: '$(Build.SourcesDirectory)/certifications'
       #----------------------------------------------------------------------
       # Tests
       #----------------------------------------------------------------------
