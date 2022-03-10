@@ -25,7 +25,7 @@ jobs:
       - task: Npm@1
         inputs:
           command: 'install'
-          workingDirectory: '$(Build.SourcesDirectory)/certifications'
+          workingDir: '$(Build.SourcesDirectory)/certifications'
         displayName: 'INSTALL: launch npm install'
       - script: chmod +x mvnw
       - task: Npm@1
