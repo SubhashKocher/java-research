@@ -24,19 +24,14 @@ jobs:
       #----------------------------------------------------------------------
       - task: Npm@1
         inputs:
-         workingDir: '$(Build.SourcesDirectory)/certifications'
-        displayName: 'Checking current dir'
-      - script: echo  '$(Build.SourcesDirectory)'
-                'pwd'
-      - task: Npm@1
-        inputs:
           command: 'install'
           workingDir: '$(Build.SourcesDirectory)/certifications'
         displayName: 'INSTALL: launch npm install'
-      - script: chmod +x mvnw
+      - script: chmod +x $(Build.SourcesDirectory)/certifications/mvnw
       - task: Npm@1
         inputs:
           command: 'custom'
+          workingDir: '$(Build.SourcesDirectory)/certifications'
           customCommand: ' run ci:backend:test'
         displayName: 'TESTS: backend'
       - task: PublishTestResults@2
@@ -49,6 +44,7 @@ jobs:
       - task: Npm@1
         inputs:
           command: 'custom'
+          workingDir: '$(Build.SourcesDirectory)/certifications'
           customCommand: ' run ci:frontend:test'
         displayName: 'TESTS: frontend'
       - task: PublishTestResults@2
@@ -60,16 +56,17 @@ jobs:
       - task: Npm@1
         inputs:
           command: 'custom'
+          workingDir: '$(Build.SourcesDirectory)/certifications'
           customCommand: ' run java:jar:prod'
         displayName: 'TESTS: packaging'
       #----------------------------------------------------------------------
       # Production build
       #----------------------------------------------------------------------
-      - script: chmod +x ./mvnw package -Pprod -DskipTests
+      - script: chmod +x $(Build.SourcesDirectory)/certifications/mvnw
         displayName: 'BUILD: creating production build'
       - task: CopyFiles@2
         inputs:
-          SourceFolder: 'target'
+          SourceFolder: '$(Build.SourcesDirectory)/certifications/target'
           Contents: '*.jar'
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
       - task: PublishBuildArtifacts@1
