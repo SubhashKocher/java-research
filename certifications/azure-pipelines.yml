@@ -32,7 +32,7 @@ jobs:
           command: 'install'
           workingDir: '$(Build.SourcesDirectory)/certifications'
         displayName: 'INSTALL: launch npm install'
-      - script: ./mvnw
+      - script: $(Build.SourcesDirectory)/certifications/mvnw
       - task: Npm@1
         inputs:
           command: 'custom'
