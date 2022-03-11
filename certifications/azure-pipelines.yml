@@ -32,7 +32,7 @@ jobs:
           command: 'install'
           workingDir: '$(Build.SourcesDirectory)/certifications'
         displayName: 'INSTALL: launch npm install'
-      - script: $(Build.SourcesDirectory)/certifications/mvnw
+      - script: chmod +x $(Build.SourcesDirectory)/certifications/mvnw
       - task: Npm@1
         inputs:
           command: 'custom'
@@ -64,7 +64,7 @@ jobs:
       #----------------------------------------------------------------------
       # Production build
       #----------------------------------------------------------------------
-      - script: chmod +x ./mvnw package -Pprod -DskipTests
+      - script: chmod +x $(Build.SourcesDirectory)/certifications/mvnw package -Pprod -DskipTests
         displayName: 'BUILD: creating production build'
       - task: CopyFiles@2
         inputs:
