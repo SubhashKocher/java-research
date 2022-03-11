@@ -24,8 +24,14 @@ jobs:
       #----------------------------------------------------------------------
       - task: Npm@1
         inputs:
+         workingDir: '$(Build.SourcesDirectory)/certifications'
+        displayName: 'Checking current dir'
+      - script: echo  '$(Build.SourcesDirectory)'
+                'pwd'
+      - task: Npm@1
+        inputs:
           command: 'install'
-          workingDirectory: '$(Build.SourcesDirectory)/certifications'
+          workingDir: '$(Build.SourcesDirectory)/certifications'
         displayName: 'INSTALL: launch npm install'
       - script: chmod +x mvnw
       - task: Npm@1
@@ -59,7 +65,7 @@ jobs:
       #----------------------------------------------------------------------
       # Production build
       #----------------------------------------------------------------------
-      - script: ./mvnw package -Pprod -DskipTests
+      - script: chmod +x ./mvnw package -Pprod -DskipTests
         displayName: 'BUILD: creating production build'
       - task: CopyFiles@2
         inputs:
