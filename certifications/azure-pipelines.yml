@@ -61,6 +61,7 @@ jobs:
       - task: Npm@1
         inputs:
           command: 'custom'
+          workingDir: '$(Build.SourcesDirectory)/certifications'
           customCommand: ' run java:jar:prod'
         displayName: 'TESTS: packaging'
       #----------------------------------------------------------------------
