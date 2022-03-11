@@ -67,7 +67,7 @@ jobs:
       #----------------------------------------------------------------------
       # Production build
       #----------------------------------------------------------------------
-      - script: chmod +x $(Build.SourcesDirectory)/certifications/mvnw package -DskipTests
+      - script: chmod +x $(Build.SourcesDirectory)/certifications/mvnw package
         displayName: 'BUILD: creating production build'
       - task: CopyFiles@2
         inputs:
