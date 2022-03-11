@@ -26,7 +26,7 @@ jobs:
         inputs:
          workingDir: '$(Build.SourcesDirectory)/certifications'
         displayName: 'Checking current dir'
-      - script: cwd
+      - script: pwd
       - task: Npm@1
         inputs:
           command: 'install'
