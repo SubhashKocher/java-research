@@ -26,8 +26,8 @@ jobs:
         inputs:
          workingDir: '$(Build.SourcesDirectory)/certifications'
         displayName: 'Checking current dir'
-      - script: echo  '$(System.DefaultWorkingDirectory)'
-                pwd
+      - script: echo  '$(Build.SourcesDirectory)'
+                'pwd'
       - task: Npm@1
         inputs:
           command: 'install'
