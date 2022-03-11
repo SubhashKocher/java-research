@@ -49,6 +49,7 @@ jobs:
       - task: Npm@1
         inputs:
           command: 'custom'
+          workingDir: '$(Build.SourcesDirectory)/certifications'
           customCommand: ' run ci:frontend:test'
         displayName: 'TESTS: frontend'
       - task: PublishTestResults@2
